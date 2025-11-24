@@ -6,6 +6,7 @@ services:
     region: oregon
     buildCommand: corepack enable && pnpm install --no-frozen-lockfile && pnpm --filter cloudbox-server build
     startCommand: pnpm --filter cloudbox-server start
+
     envVars:
       - key: NODE_ENV
         value: production
@@ -27,14 +28,9 @@ services:
     env: static
     buildCommand: corepack enable && pnpm install --no-frozen-lockfile && pnpm --filter cloudbox-web build
     staticPublishPath: apps/web/dist
-    envVars:
-  - key: NODE_ENV
-    value: development   # ensures vite and @vitejs/plugin-react are installed
-  - key: VITE_API_URL
-    value: https://cloudbox-server.onrender.com/api
 
     envVars:
       - key: NODE_ENV
-        value: development   # ensures devDependencies like vite and @vitejs/plugin-react are installed
+        value: development           # ensures vite and react plugin install
       - key: VITE_API_URL
         value: https://cloudbox-server.onrender.com/api
