@@ -1,0 +1,29 @@
+version: "3.8"
+services:
+  api:
+    build: .
+    environment:
+      - CLIENT_URL=http://localhost:5173
+      - MONGO_URI=mongodb://mongo:27017/cloudbox
+      - JWT_SECRET=dev_secret
+      - ENC_SECRET=AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+      - ENC_IV=AAAAAAAAAAA=
+      - STORAGE_QUOTA_MB=10240
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+  web:
+    image: node:18-alpine
+    working_dir: /app
+    volumes:
+      - ./apps/web:/app
+    command: sh -c "corepack enable && pnpm i && pnpm build && pnpm preview --host"
+    environment:
+      - VITE_API_URL=http://localhost:8080/api
+    ports:
+      - "5173:5173"
+  mongo:
+    image: mongo:6
+    ports:
+      - "27017:27017"
