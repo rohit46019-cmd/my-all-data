@@ -29,6 +29,6 @@ services:
     staticPublishPath: apps/web/dist
     envVars:
       - key: NODE_ENV
-        value: development   # 👈 ensures devDependencies like vite and @vitejs/plugin-react are installed
+        value: development   # ensures devDependencies like vite and @vitejs/plugin-react are installed
       - key: VITE_API_URL
         value: https://cloudbox-server.onrender.com/api
