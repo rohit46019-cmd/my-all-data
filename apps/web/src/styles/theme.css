@@ -1,1 +1,33 @@
+:root {
+  --bg: #0b0f1a;
+  --fg: #eaf0ff;
+  --glass: rgba(255,255,255,0.08);
+  --accent: linear-gradient(90deg,#ff6b6b,#feca57,#54a0ff,#5f27cd);
+  --muted: #9aa5b1;
+}
+
+.light {
+  --bg: #f7f9fc;
+  --fg: #1f2937;
+  --glass: rgba(255,255,255,0.6);
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: Inter, system-ui, sans-serif;
+}
+
+.glass {
+  backdrop-filter: blur(16px) saturate(180%);
+  background-color: var(--glass);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 16px;
+}
+
+.accent-bar {
+  height: 10px;
+  background-image: var(--accent);
+  border-radius: 999px;
+}
 
